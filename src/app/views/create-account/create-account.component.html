@@ -1,0 +1,42 @@
+<div class="d-flex mt-2" style="justify-content:'center'">
+    <div id="login-box">
+        <div class="card  " style="width: 480px;height:580px; background: rgb(0, 0, 0); /* Fallback color */
+                          background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+                          color: #f1f1f1;padding:10px">
+            <br>
+            <div class="d-flex" style="justify-content:'center'">
+                <h2 class="signup">Customer Account Creation</h2>
+                <br><br>
+            </div>
+
+            <form method="post">
+                <label for="customerId">Enter Customer Id:</label><span class="required" style="color: red;">
+                    *</span><br>
+                <input type="number" class="form-control form-rounded" path="customerId" name="customerId">
+                <label style="text-align: left;">Enter Account No:</label><span class="required" style="color: red;">
+                    *</span><br>
+                <input type="number" class="form-control form-rounded" path="accountId" name="accountId"
+                    placeholder="AccountId" autocomplete="off" required="required" />
+                Enter Amount:<span class="required" style="color: red;"> *</span><br>
+                <input type="number" class="form-control form-rounded" path="currentBalance" name="currentBalance"
+                    placeholder="Amount" autocomplete="off" required="required" />
+                Select Account Type:<span class="required" style="color: red;"> *</span><br>
+                <select type="text" class="form-select" path="accountType" placeholder="Account Type" name="accountType"
+                    autocomplete="off" required="required">
+                    <form:option value="Savings"></form:option>
+                    <form:option value="Current"></form:option>
+                </select>
+                Enter Owner Name:<span class="required" style="color: red;"> *</span><br>
+                <input type="text" class="form-control form-rounded" path="ownerName" name="ownerName"
+                    placeholder="OwnerName" autocomplete="off" required="required" />
+                <div class="d-flex mt-2 " style="justify-content:center">
+                    <input type="submit" class="btn btn-success" name="signup_submit" value="Create" />
+                </div>
+
+            </form>
+
+            <p> <a routerLink="/dashboard?custmsg=Customer Created">Go Back</a> and create account Later....</p>
+        </div>
+
+    </div>
+</div>

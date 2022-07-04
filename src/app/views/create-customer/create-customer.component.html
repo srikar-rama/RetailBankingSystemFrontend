@@ -1,0 +1,47 @@
+<div class="d-flex mt-2" style="justify-content:center">
+    <div id="login-box">
+        <div class="card  " style="width: 480px;height:630px; background: rgb(0, 0, 0); /* Fallback color */
+  					background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  					color: #f1f1f1;padding: 10px;">
+            <br>
+            <div class="d-flex" style="justify-content:'center'">
+                <h2 class="signup">Customer Sign up</h2>
+                <br><br>
+            </div>
+            <form method="post">
+
+                <label for="userid">Enter Customer Id:</label><span class="required" style="color: red;"> *</span><br>
+                <input type="text" class="form-control form-rounded" path="userid" name="Id" placeholder="Enter Id"
+                    autocomplete="off" required="required" />
+
+                <label for="username">Enter Username:</label><span class="required" style="color: red;"> *</span><br>
+                <input type="text" class="form-control form-rounded" path="username" name="username"
+                    placeholder="Enter Username" autocomplete="off" required="required" />
+
+                <label for="password">Enter Password:</label><span class="required" style="color: red;"> *</span><br>
+                <input type="password" class="form-control form-rounded" path="password" name="password"
+                    placeholder="Enter Password" required="required" />
+
+                <label for="dateOfBirth">Enter Date Of Birth:</label><span class="required" style="color: red;">
+                    *</span><br>
+                <input type="date" class="form-control form-rounded" id="date" path="dateOfBirth" name="dob"
+                    placeholder="Date of Birth" />
+
+                <label for="pan">Enter Pan Number: </label><span class="required" style="color: red;">*</span><br>
+                <input type="text" class="form-control form-rounded" path="pan" name="pan" placeholder="Pan Number"
+                    autocomplete="off" required="required" />
+
+                <label for="address">Enter Address</label><span class="required" style="color: red;"> *</span><br>
+                <input type="text" class="form-control form-rounded" path="address" name="address" placeholder="Address"
+                    autocomplete="off" required="required" />
+                    <div class="d-flex mt-2" style="justify-content: center;">
+                        <input type="submit" class="btn btn-success" name="signup_submit" value="Create" />
+                    </div>
+                
+
+            </form>
+            <p id="message"></p>
+        </div>
+    </div>
+
+</div>
