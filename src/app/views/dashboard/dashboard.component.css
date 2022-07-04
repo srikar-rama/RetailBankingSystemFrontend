@@ -1,0 +1,68 @@
+
+    html {
+        height: 100%;
+    }
+    
+    #message
+    {
+        color : red; 
+    }
+    #accmsg
+    {
+        color : green; 
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+                
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+                }
+                input[type=number] {
+                    -moz-appearance: textfield;
+                    }
+        
+                    body {
+                    margin: 0;
+                    
+                    font-family: sans-serif;
+                    color:white;
+                    background: linear-gradient(to right, #610354, #053070);
+                    
+                    }
+                    ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding-left:30;
+                    overflow: hidden;
+                    background-color: #333;
+                    }
+                    li {
+                        float: left;
+                        }
+            
+                        li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                        }
+            
+                        li a:hover:not(.active) {
+                        background-color: #111;
+                        }
+            
+                        .active {
+                        background-color: #4c56af;
+                        }
+ 
