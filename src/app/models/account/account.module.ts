@@ -1,22 +1,43 @@
+import { Transaction } from "../transaction/transaction.module";
+
 export interface AccountDto {
-  long accountId;
+  accountId:number;
 	
-	String customerId;
+	customerId:string;
 
-	double currentBalance;
+	currentBalance:DoubleRange;
 	
-  String accountType;
+  accountType:string;
 	
-  String ownerName;
+  ownerName:string;
+//   private transient List<Transaction> transactions = new ArrayList<Transaction>();
+  transactions:Transaction[]
 }
-export class AccountDto {
- public long accountId;
+export class Account{
+ public accountId:number;
 	
- public String customerId;
+ public customerId:string;
 
- public	double currentBalance;
+ public	currentBalance:DoubleRange;
 	
- public String accountType;
+ public accountType:string;
 	
- public String ownerName;
-}
+ public ownerName:string;
+ public transactions:Transaction[]
+ constructor(accountId:number,
+	
+	customerId:string,
+
+	currentBalance:DoubleRange,
+	
+  accountType:string,
+	
+  ownerName:string,transactions:Transaction[]){
+  this.accountId=accountId;
+  this.customerId=customerId;
+  this.currentBalance=currentBalance;
+  this.accountType=accountType;
+  this.ownerName=ownerName;
+  this.transactions=transactions
+  }
+ }
