@@ -1,10 +1,11 @@
-<div style="margin: 9em 120em 14em 14em;">
-    <div class="card   " style="width: 950px; background: rgb(0, 0, 0); /* Fallback color */
+<!-- customer details -->
+<div class="d-flex mt-3" style="justify-content:center">
+    <div class="card col-md-8" style="width: 950px; background: rgb(0, 0, 0); /* Fallback color */
                           background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
                           color: #f1f1f1;">
         <div class="card-body">
             <div class="d-flex" style="justify-content:center;">
-                <caption style="font-family: Bradley Hand ITC;">
+                <caption>
                     <h3>Customer Details</h3>
                 </caption>
             </div>
@@ -15,103 +16,104 @@
                     <br>
                 </caption>
             </div>
-            <table  cellpadding="5" class="center" style="width: 900;">
-                <tr>
-                    <th>CUSTOMER ID</th>
-                    <th>CUSTOMER NAME</th>
-                    <th>DOB</th>
-                    <th>PAN</th>
-                    <th>ADDRESS</th>
-                </tr>
-                <tr>
-                    <td>
-                        <c:out value="${customer.userid}" />
-                    </td>
-                    <td>
-                        <c:out value="${customer.username}" />
-                    </td>
-                    <td>
-                        <c:out value="${customer.dateOfBirth}" />
-                    </td>
-                    <td>
-                        <c:out value="${customer.pan}" />
-                    </td>
-                    <td>
-                        <c:out value="${customer.address}" />
-                    </td>
-                </tr>
-            </table>
-            <br>
-
-            <caption>
-                <div class="d-flex" style="justify-content:center;">
-                    <br>
-                    <h5 style="color: white;">Account Details</h5>
-                </div><br>
-            </caption>
-            <table border="2" cellpadding="5" class="center" style="width: 900;">
-                <tr>
-                    <th>ACCOUNT ID</th>
-                    <th>CURRENT BALANCE</th>
-                    <th>ACCOUNT TYPE</th>
-                    <th>OWNER NAME</th>
-                </tr>
-                <c:forEach var="acc" items="${customer.accounts}">
+            <div class="d-flex" style="justify-content:center">
+                <table cellpadding="5" class="center" style="width: 900;">
                     <tr>
-
+                        <th>CUSTOMER ID</th>
+                        <th>CUSTOMER NAME</th>
+                        <th>DOB</th>
+                        <th>PAN</th>
+                        <th>ADDRESS</th>
+                    </tr>
+                    <tr>
                         <td>
-                            <c:out value="${acc.accountId}" />
+                            {{customer.userid}}
                         </td>
                         <td>
-                            <c:out value="${acc.currentBalance}" />
+                            {{customer.username}}
                         </td>
                         <td>
-                            <c:out value="${acc.accountType}" />
+                            {{customer.dateOfBirth}}
                         </td>
                         <td>
-                            <c:out value="${acc.ownerName}" />
+                            {{customer.pan}}
+                        </td>
+                        <td>
+                            {{customer.address}}
                         </td>
                     </tr>
-                </c:forEach>
+                </table>
+            </div>
+            <br>
+            <div class="d-flex" style="justify-content:center;">
+                <caption>
+                    <h5>Account Details</h5>
+                    <br>
+                </caption>
+            </div>
+            <div class="d-flex" style="justify-content:center">
+                <table cellpadding="5" class="center" style="width: 900;">
+                    <tr>
+                        <th>ACCOUNT ID</th>
+                        <th>CURRENT BALANCE</th>
+                        <th>ACCOUNT TYPE</th>
+                        <th>OWNER NAME</th>
+                    </tr>
 
-            </table>
+                    <tr *ngFor="let acc of customer.accounts ">
+
+                        <td>
+                            {{acc.accountId}}
+                        </td>
+                        <td>
+                            {{acc.currentBalance}}
+                        </td>
+                        <td>
+                            {{acc.accountType}}
+                        </td>
+                        <td>
+                            {{acc.ownerName}}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
             <br>
 
         </div>
     </div>
+</div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-
-    <!--------------------- History------------------>
-
+<!--------------------- History------------------>
+<div class="d-flex mt-3" style="justify-content:center">
     <div class="card   " style="width: 950px;  background: rgb(0, 0, 0); /* Fallback color */
                     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
                     color: #f1f1f1;">
         <div class="card-body">
-            <div class="d-flex" style="justify-content:center;">
+            <div class="d-flex" style="justify-content:center;flex-direction: column;">
                 <caption>
-                    <h2>Transaction Details</h2>
+                    <h2 style="text-align:center;">Transaction Details</h2>
                 </caption>
-                <br><br>
-                <form action="/customerdashboard/getTransactionsInCustomerdashboard" method="post">
-                    <select style="font-family: serif; font-size: 25;font-weight:bold;" path="accountId"
-                        name="accountId">
-                        <c:forEach var="acc" items="${customer.accounts}">
-                            <option value="${acc.accountId }">Account No: ${acc.accountId }</option>
-                        </c:forEach>
-                    </select>
-                    <br><br>
-                    <input class="btn btn-primary" type="submit" value="Submit" />
-
-                </form>
                 <br>
-                <c:if test="${!empty transactions}">
-                    <table border="1" cellpadding="5">
+                <br>
+                <div class="d-flex" style="justify-content:center">
+                    <form action="/customerdashboard/getTransactionsInCustomerdashboard" method="post">
+                        <select style="font-family: serif; font-size: 25;font-weight:bold;" path="accountId"
+                            name="accountId">
+                            <div *ngFor="let acc of customer.accounts">
+                                <option value={{acc.accountId }}>Account No: {{acc.accountId }}</option>
+                            </div>
+                        </select>
+                        <br><br>
+                        
+                        <input class="btn btn-primary" type="submit" value="Submit" />
+                
+                    </form>
+                </div>
+                
+                <br>
+                <div *nfIf="empty transactions">
+                    <table cellpadding="5">
 
                         <tr>
                             <th>sourceAccountId</th>
@@ -122,104 +124,94 @@
                             <th>initiationDate</th>
                             <th>reference</th>
                         </tr>
-                        <c:forEach var="trans" items="${transactions}">
-                            <tr>
 
-                                <td>
-                                    <c:out value="${trans.sourceAccountId}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.sourceOwnerName}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.targetAccountId}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.targetOwnerName}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.amount}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.initiationDate}" />
-                                </td>
-                                <td>
-                                    <c:out value="${trans.reference}" />
-                                </td>
-                            </tr>
-                        </c:forEach>
+                        <tr *ngFor="let trans of transactions">
+
+                            <td>
+                                {{trans.sourceAccountId}}
+                            </td>
+                            <td>
+                                {{trans.sourceOwnerName}}
+                            </td>
+                            <td>
+                                {{trans.targetAccountId}}
+                            </td>
+                            <td>
+                                {{trans.targetOwnerName}}
+                            </td>
+                            <td>
+                                {{trans.amount}}
+                            </td>
+                            <td>
+                                {{trans.initiationDate}}
+                            </td>
+                            <td>
+                                {{trans.reference}}
+                            </td>
+                        </tr>
+
                     </table>
-
-
-                </c:if>
+                </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
+</div>
 
-    <!--------------------- WITHDRAW------------------>
-    <div class="card   " style="width: 400px; background: rgb(0, 0, 0); /* Fallback color */
+<!--------------------- WITHDRAW------------------>
+<div class="d-flex mt-3" style="justify-content:space-around">
+    <div class="card col-md-5 " style="width: 400px; background: rgb(0, 0, 0); /* Fallback color */
                           background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
                           color: #f1f1f1;">
         <div class="card-body">
             <h4 class="card-title">Withdraw Amount</h4>
-            <form:form action="/withdraw" method="post" modelAttribute="accountinput">
-                <form:select path="accountId" name="accountId">
-                    <c:forEach var="acc" items="${customer.accounts}">
-                        <form:option value="${acc.accountId }"></form:option>
-                    </c:forEach>
-                </form:select>
+            <form method="post">
+                <select path="accountId" name="accountId">
+                    <div *ngFor="let acc of customer.accounts">
+                        <option value={{acc.accountId }}></option>
+                    </div>
+                </select>
                 <br><br>
-                <label for="amount">Enter Amount:</label><span class="required" style="color: red;"> *</span><br>
+                <label>Enter Amount:</label><span class="required" style="color: red;"> *</span><br>
                 <input type="number" path="amount" name="amount" placeholder="Enter the amount" required="required" />
                 <input type="hidden" name="reference" value="withdraw" />
                 <br><br>
                 <h6>Minimum balance of 1000 Rs. should be maintained</h6>
                 <br><br> <input type="submit" name="View" value="Withdraw Amount" class="btn btn-success" /><br>
-            </form:form>
+            </form>
             <br>
-            <p style="font-family: Bradley Hand ITC; color: cornflowerblue;" id="message">${msg}</p>
+            <p style="font-family: Bradley Hand ITC; color: cornflowerblue;" id="message"></p>
         </div>
     </div>
+    <br><br><br>
+    <!--------------------- TRANSFER------------------>
 
-</div>
-<br><br><br>
-<!--------------------- TRANSFER------------------>
-<div class="row">
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-        <div style="margin: -42.8em 12em 5em 48em;">
-            <div class="card   " style=" padding-left: 20;position: relative; width: 400px;height:400px; background: rgb(0, 0, 0); /* Fallback color */
+    <div class="card col-md-5 mt-3" style=" padding-left: 20;position: relative; width: 400px;height:400px; background: rgb(0, 0, 0); /* Fallback color */
                           background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
                           color: #f1f1f1;">
-                <div class="card-body">
-                    <h4 class="card-title">Transfer Amount</h4>
-                    <form:form action="/transfer" method="post" modelAttribute="accountinput">
-                        <form:select path="accountId" name="accountId">
-                            <c:forEach var="acc" items="${customer.accounts}">
-                                <form:option value="${acc.accountId }"></form:option>
-                            </c:forEach>
-                        </form:select>
-                        <br><br><label for="targetAccount">Enter Account No:</label><span class="required"
-                            style="color: red;"> *</span><br>
-                        <input type="number" name="targetAccount" placeholder="Enter the Target Account ID"
-                            required="required" />
-                        <br> <br>
-                        <label for="amount">Enter Amount:</label><span class="required" style="color: red;">
-                            *</span><br>
-                        <input type="number" name="amount" placeholder="Enter the amount" /required="required">
-                        <input type="hidden" name="reference" value="transfer" />
+        <div class="card-body">
+            <h4 class="card-title">Transfer Amount</h4>
+            <form method="post">
+                <select path="accountId" name="accountId">
+                    <div *ngFor="let acc of customer.accounts">
+                        <option value={{acc.accountId }}></option>
+                    </div>
+                </select>
+                <br><br><label for="targetAccount">Enter Account No:</label><span class="required" style="color: red;">
+                    *</span><br>
+                <input type="number" name="targetAccount" placeholder="Enter the Target Account ID"
+                    required="required" />
+                <br> <br>
+                <label for="amount">Enter Amount:</label><span class="required" style="color: red;">
+                    *</span><br>
+                <input type="number" name="amount" placeholder="Enter the amount" required="required">
+                <input type="hidden" name="reference" value="transfer" />
 
-                        <br><br>
-                        <h6>Minimum balance of 1000 Rs. should be maintained</h6>
-                        <br> <input type="submit" name="View" value="Transfer Amount" class="btn btn-success" /><br>
-                    </form:form>
-                    <br>
-                    <p style="color: cornflowerblue;" id="message"></p>
-                </div>
-            </div>
+                <br><br>
+                <h6>Minimum balance of 1000 Rs. should be maintained</h6>
+                <br> <input type="submit" name="View" value="Transfer Amount" class="btn btn-success" /><br>
+            </form>
+            <br>
+            <p style="color: cornflowerblue;" id="message"></p>
         </div>
     </div>
+</div>
