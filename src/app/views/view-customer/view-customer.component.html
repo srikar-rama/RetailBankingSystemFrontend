@@ -1,1 +1,84 @@
-<p>view-customer works!</p>
+<div class="d-flex mt-3" style="justify-content:center">
+    <div class="card col-md-8" style="width: 950px; background: rgb(0, 0, 0); /* Fallback color */
+                          background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+                          color: #f1f1f1;">
+        <div class="card-body">
+            <div class="d-flex" style="justify-content:center;">
+                <caption>
+                    <h3>Customer Details</h3>
+                </caption>
+            </div>
+            <br><br>
+            <div class="d-flex" style="justify-content:center;">
+                <caption>
+                    <h5>Personal Details</h5>
+                    <br>
+                </caption>
+            </div>
+            <div class="d-flex" style="justify-content:center">
+                <table cellpadding="5" class="center" style="width: 900;">
+                    <tr>
+                        <th>CUSTOMER ID</th>
+                        <th>CUSTOMER NAME</th>
+                        <th>DOB</th>
+                        <th>PAN</th>
+                        <th>ADDRESS</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{customer.userid}}
+                        </td>
+                        <td>
+                            {{customer.username}}
+                        </td>
+                        <td>
+                            {{customer.dateOfBirth}}
+                        </td>
+                        <td>
+                            {{customer.pan}}
+                        </td>
+                        <td>
+                            {{customer.address}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="d-flex" style="justify-content:center;">
+                <caption>
+                    <h5>Account Details</h5>
+                    <br>
+                </caption>
+            </div>
+            <div class="d-flex" style="justify-content:center">
+                <table cellpadding="5" class="center" style="width: 900;">
+                    <tr>
+                        <th>ACCOUNT ID</th>
+                        <th>CURRENT BALANCE</th>
+                        <th>ACCOUNT TYPE</th>
+                        <th>OWNER NAME</th>
+                    </tr>
+
+                    <tr *ngFor="let acc of customer.accounts ">
+
+                        <td>
+                            {{acc.accountId}}
+                        </td>
+                        <td>
+                            {{acc.currentBalance}}
+                        </td>
+                        <td>
+                            {{acc.accountType}}
+                        </td>
+                        <td>
+                            {{acc.ownerName}}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <br>
+
+        </div>
+    </div>
+</div>
