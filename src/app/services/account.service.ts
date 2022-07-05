@@ -16,7 +16,7 @@ export class AccountService {
   }
   getAccount(accountid: number) {
     return this.http.get<Account>(
-      `http://localhost:8086/account-ms/getAccount/${accountid}`
+      'http://localhost:8086/account-ms/getAccount/'+accountid
     );
   }
 
@@ -29,7 +29,7 @@ export class AccountService {
     ownerName: string
   ) {
     return this.http.post<AccountCreationStatus>(
-      `http://localhost:8086/account-ms/createAccount/${customerid}`,
+      'http://localhost:8086/account-ms/createAccount/'+customerid,
       { accountId, customerId, currentBalance, accountType, ownerName }
     );
   }
