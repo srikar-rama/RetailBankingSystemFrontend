@@ -12,9 +12,9 @@ export class RulesService {
   evaluateMinBal() {
    
   }
-  getServiceCharges(){
+  getServiceCharges(accountid:number){
       return this.http.get<Account>(
-      'http://localhost:8086/account-ms/getAccounts/10054546'
+      'http://localhost:8086/account-ms/getAccounts/'+accountid
       );
   }
 
